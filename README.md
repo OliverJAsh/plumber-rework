@@ -1,23 +1,24 @@
-plumber-less [![Build Status](https://travis-ci.org/plumberjs/plumber-less.png?branch=master)](https://travis-ci.org/plumberjs/plumber-less)
+plumber-rework [![Build Status](https://travis-ci.org/oliverjash/plumber-rework.png?branch=master)](https://travis-ci.org/oliverjash/plumber-rework)
 ============
 
-[LESS](http://lesscss.org/) compilation operation for [Plumber](https://github.com/plumberjs/plumber) pipelines.
+[Rework](https://github.com/reworkcss/rework) compilation operation for [Plumber](https://github.com/plumberjs/plumber) pipelines.
 
 ## Example
 
-    var less = require('plumber-less');
+    var rework = require('plumber-rework');
+    var reworkImport = require('rework-import');
 
     module.exports = function(pipelines) {
 
         pipelines['css'] = [
-            glob('main.less'),
-            less(),
+            glob('main.css'),
+            rework(),
             // ... more pipeline operations
         ];
 
         pipelines['icons'] = [
-            glob('icons.less'),
-            less({rootPath: '../..'}),
+            glob('icons.css'),
+            rework({ plugins: [reworkImport()]}),
             // ... more pipeline operations
         ];
 
@@ -26,10 +27,8 @@ plumber-less [![Build Status](https://travis-ci.org/plumberjs/plumber-less.png?b
 
 ## API
 
-### `less(lessOptions)`
+### `rework(options)`
 
-Compile each input LESS resource to a single CSS resource.
+Compile each input CSS resource to a single CSS resource.
 
-Optionally, options can be passed to the LESS compiler via the `lessOptions` parameter.
-
-Note that you may **not** specify minimisation configuration options, such as `compress` or `cleancss`; this should be done using the [plumber-mincss](https://github.com/plumberjs/plumber-mincss) operation instead, to ensure atomicity of operations.
+Optionally, plugins can be passed to the Rework compiler via `options.plugins`.
