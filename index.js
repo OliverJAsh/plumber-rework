@@ -22,6 +22,13 @@ function rework(config) {
                 try {
                     var rework = createRework(resource.data(), { source: resourcePath && resourcePath.absolute() });
 
+                    // TODO: Clone AST before it is mutated
+                    // This gives us the initial imports, but we need to do
+                    // this recursively
+                    // https://github.com/plumberjs/plumber-less/commit/240bdd622d98947318399a1852472af36c669602#diff-168726dbe96b3ce427e7fedce31bb0bcL12
+                    // rework-import already does this!
+                    console.log(JSON.stringify(rework.obj, null, '\t'));
+
                     (config.plugins || []).forEach(function (plugin) {
                         rework.use(plugin);
                     });
