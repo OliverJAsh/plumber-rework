@@ -1,0 +1,43 @@
+{
+  "name": "plumber-rework",
+  "version": "0.4.0",
+  "description": "Rework operation for Plumber pipelines",
+  "main": "index",
+  "dependencies": {
+    "mercator": "~0.1.4",
+    "rework": "~1.0.1",
+    "rx": "~2.3.9"
+  },
+  "peerDependencies": {
+    "plumber": "~0.4.0"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.16.2",
+    "plumber-util-test": "~0.4.0",
+    "rework-import": "^1.2.1",
+    "sinon": "~1.8.1",
+    "sinon-chai": "~2.5.0",
+    "source-map": "~0.1.31"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/plumberjs/plumber-rework.git"
+  },
+  "keywords": [
+    "build",
+    "assets",
+    "pipeline",
+    "plumber",
+    "rework",
+    "css"
+  ],
+  "author": "Oliver Joseph Ash <oliverjash@gmail.com>",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/plumberjs/plumber-rework/issues"
+  }
+}
