@@ -196,8 +196,7 @@ describe('rework', function(){
         });
     });
 
-    // FIXME:
-    describe.skip('when passed a CSS file with a source map', function() {
+    describe('when passed a CSS file with a source map', function() {
         var transformedResources;
         var mainData = fs.readFileSync('test/fixtures/concatenated.css').toString();
         var mainMapData = SourceMap.fromMapData(fs.readFileSync('test/fixtures/concatenated.css.map').toString());
@@ -213,9 +212,20 @@ describe('rework', function(){
             completeWithResources(transformedResources, function(resources) {
                 var sourceMap = resources[0].sourceMap();
 
+                // The input source map is rebased and includes a mapping to
+                // the new CSS file
+                // As per: https://github.com/reworkcss/css/issues/52#issuecomment-55350737
                 sourceMap.file.should.equal('concatenated.css');
-                sourceMap.sources.should.deep.equal(mainMapData.sources);
-                sourceMap.sourcesContent.should.deep.equal(mainMapData.sourcesContent);
+                // Sources are correctly(?) rebased from relative to absolute
+                // As per: https://github.com/reworkcss/css/issues/52#issuecomment-55430126
+                sourceMap.sources.should.deep.equal([
+                    'test/fixtures/1.css',
+                    'test/fixtures/2.css',
+                    'test/fixtures/concatenated.css'
+                ]);
+                sourceMap.sourcesContent.should.deep.equal(mainMapData.sourcesContent.concat([
+                    '.one {\n  border: 1;\n}\n\n.two {\n  margin: 2px;\n}\n/*# sourceMappingURL=concatenated.css.map */\n'
+                ]));
             }, resourcesError, done);
         });
 
