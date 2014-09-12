@@ -1,1 +1,1 @@
-{"version":3,"file":"concatenated.css","mappings":"AAAA;EACI;;;ACDJ;EACI","sources":["test/fixtures/1.css","test/fixtures/2.css"],"sourcesContent":[".one {\n    border: 1;\n}\n",".two {\n    margin: 2px;\n}"],"names":[]}
+{"version":3,"file":"concatenated.css","mappings":"AAAA;EACI;;;ACDJ;EACI","sources":["1.css","2.css"],"sourcesContent":[".one {\n    border: 1;\n}\n",".two {\n    margin: 2px;\n}"],"names":[]}

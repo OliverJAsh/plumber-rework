@@ -49,12 +49,7 @@ function rework(config) {
                 var data = out.data;
                 var sourceMap = SourceMap.fromMapData(out.sourceMapData);
 
-                // If the source had a sourcemap, rebase the Rework
-                // sourcemap based on that original map
-                var originalMapData = resource.sourceMap();
-                if (originalMapData) {
-                    sourceMap = originalMapData.apply(sourceMap);
-                }
+                // Rework does the source map rebasing for us
 
                 return compiledCss.withData(data, sourceMap);
             }).catch(function(error) {
