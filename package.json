@@ -1,6 +1,6 @@
 {
   "name": "plumber-rework",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Rework operation for Plumber pipelines",
   "main": "index",
   "dependencies": {
